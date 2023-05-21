@@ -11,6 +11,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #273043;
+    text-align: center;
 }
 .header{
     display: flex;
@@ -22,27 +24,38 @@ body{
 }
 .calculator{
     border: 2px solid red;
-    
+    margin-top: 3rem;
 }
 .screen{
     text-align: right;
     font-size: 50px;
     overflow: hidden;
+    color:white;
+    margin-right: 1rem;
+}
+.screen-top{
+    font-size: 30px;
 }
 .calc-button{
     color: white;
-    background-color: #242c3d;
+    background-color: rgb(36, 44, 61);
     padding: 10px;
     font-size: 40px;
     outline: none;
     border: none;
     text-align: center;
-    border-right: 1px solid gray;
+    transition: 0.1s;
+    border-radius: 10px;
+}
+.calc-button:hover{
+    transform: scale(1.1);
 }
 .operation{
-    background-color: blue;
+    background-color: #caa10b;
 }
 .buttons{
     display: grid;
     grid-template-columns: repeat(4,1fr);
+    gap:0.5rem;
+    padding: 10px;
 }
