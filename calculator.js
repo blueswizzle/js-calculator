@@ -3,6 +3,10 @@ const screenMain = document.querySelector('.screen-main')
 const screenTop = document.querySelector('.screen-top')
 let firstNum = 0;
 let secondNum = 0;
+let operation = "";
+let result = 0;
+
+screenTop.style.visibility = 'hidden';
 
 buttons.forEach(button =>{
     button.addEventListener('click', (e) =>{
@@ -10,6 +14,8 @@ buttons.forEach(button =>{
         switch(input){
             case "AC":
                 screenMain.innerHTML = 0;
+                screenTop.innerHTML = 0;
+                screenTop.style.visibility = 'hidden';
                 break;
             case "negative-toggle":
                 // do sometihng
@@ -21,19 +27,76 @@ buttons.forEach(button =>{
                 //do something
                 break;
             case "addition":
-                //do something
+                add();
                 break;
             case "subtract":
-                //do something
+                subtract();
                 break;
             case "equals":
-                // do something
+                equals();
                 break;
             case "decimal":
                 //do something
-                break;                            
+                break;
+            default:
+                let screenNumber = screenMain.innerHTML;
+                screenMain.innerHTML = parseInt(screenNumber + input).toString();
+                break;
         }
-        let screenNumber = screenMain.innerHTML;
-        screenMain.innerHTML = parseInt(screenNumber + firstNum).toString()
+        
     })
-})
+});
+
+
+function negativeToggle(){
+
+}
+
+function add(){
+    if(operation == "+"){
+        firstNum = parseInt(firstNum) + parseInt(screenMain.innerHTML)
+        screenTop.style.visibility = 'visible';
+        screenMain.innerHTML = 0;
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }else{
+        firstNum = screenMain.innerHTML;
+        operation = "+"
+        screenMain.innerHTML = 0;
+        screenTop.style.visibility = 'visible';
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }
+  
+}
+
+function subtract(){
+    if(operation == "-"){
+        firstNum = parseInt(firstNum) - parseInt(screenMain.innerHTML)
+        screenTop.style.visibility = 'visible';
+        screenMain.innerHTML = 0;
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }else{
+        firstNum = screenMain.innerHTML;
+        operation = "-"
+        screenMain.innerHTML = 0;
+        screenTop.style.visibility = 'visible';
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }
+}
+
+function equals(){
+    secondNum = screenMain.innerHTML
+    switch(operation){
+        case "+":
+            result = parseInt(firstNum) + parseInt(secondNum)
+            screenTop.innerHTML = `${firstNum} ${operation} ${secondNum} = `;
+            screenMain.innerHTML = result;
+            operation = ""
+            break;
+        case "-":
+            result = parseInt(firstNum) - parseInt(secondNum)
+            screenTop.innerHTML = `${firstNum} ${operation} ${secondNum} = `;
+            screenMain.innerHTML = result;
+            operation = ""
+            break;
+    }
+}

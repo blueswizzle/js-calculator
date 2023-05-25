@@ -62,3 +62,8 @@ body{
 .buttons button:hover{
     transform: scale(1.1);
 }
+
+.buttons button:active {
+  box-shadow: #1d2035 0 3px 7px inset;
+  transform: translateY(2px);
+}
