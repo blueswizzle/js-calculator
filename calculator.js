@@ -21,10 +21,10 @@ buttons.forEach(button =>{
                 // do sometihng
                 break;
             case "divide":
-                //do something
+                divide();
                 break;
             case "multiply":
-                //do something
+                multipy();
                 break;
             case "addition":
                 add();
@@ -83,6 +83,35 @@ function subtract(){
     }
 }
 
+function multipy(){
+    if(operation == "*"){
+        firstNum = parseInt(firstNum) * parseInt(screenMain.innerHTML)
+        screenTop.style.visibility = 'visible';
+        screenMain.innerHTML = 0;
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }else{
+        firstNum = screenMain.innerHTML;
+        operation = "*"
+        screenMain.innerHTML = 0;
+        screenTop.style.visibility = 'visible';
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }
+}
+
+function divide(){
+    if(operation == "/"){
+        firstNum = parseInt(firstNum) / parseInt(screenMain.innerHTML)
+        screenTop.style.visibility = 'visible';
+        screenMain.innerHTML = 0;
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }else{
+        firstNum = screenMain.innerHTML;
+        operation = "/"
+        screenMain.innerHTML = 0;
+        screenTop.style.visibility = 'visible';
+        screenTop.innerHTML = `${firstNum} ${operation} `;
+    }
+}
 function equals(){
     secondNum = screenMain.innerHTML
     switch(operation){
@@ -98,5 +127,22 @@ function equals(){
             screenMain.innerHTML = result;
             operation = ""
             break;
+        case "*":
+            result = parseInt(firstNum) * parseInt(secondNum)
+            screenTop.innerHTML = `${firstNum} ${operation} ${secondNum} = `;
+            screenMain.innerHTML = result;
+            operation = ""
+            break;
+        case "/":
+            result = parseInt(firstNum) / parseInt(secondNum)
+            result = roundNumber(result);
+            screenTop.innerHTML = `${firstNum} ${operation} ${secondNum} = `;
+            screenMain.innerHTML = result;
+            operation = ""
+            break; 
     }
+}
+
+function roundNumber(number){
+    return Math.round(number * 1000 + Number.EPSILON) / 1000;
 }
