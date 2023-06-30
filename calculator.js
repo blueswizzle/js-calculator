@@ -16,12 +16,7 @@ buttons.forEach(button =>{
         let input = e.target.id
         switch(input){
             case "AC":
-                screenMain.innerHTML = "0";
-                screenTop.innerHTML = "0";
-                screenTop.style.visibility = 'hidden';
-                operation = "";
-                prevOperation = "";
-                result = 0;
+                clear();
                 break;
             case "negative-toggle":
                 negativeToggle();
@@ -90,6 +85,14 @@ function decimal(){
     }
 }
 
+function clear(){
+    screenMain.innerHTML = "0";
+    screenTop.innerHTML = "0";
+    screenTop.style.visibility = 'hidden';
+    operation = "";
+    prevOperation = "";
+    result = 0;
+}
 function performOperation(){
     screenTop.style.visibility = 'visible'
     if(prevOperation !== ""){
@@ -103,7 +106,10 @@ function performOperation(){
 }
 
 function appendNumber(num){
-    screenMain.innerHTML = parseFloat(screenMain.innerHTML + num).toString();
+    if(screenMain.innerHTML.length < 9){
+        screenMain.innerHTML = parseFloat(screenMain.innerHTML + num).toString();
+    }
+    
 }
 function deleteNumber(){
     screenMain.innerHTML = screenMain.innerHTML
@@ -182,4 +188,5 @@ function keyBoardInput(e){
     if(e.key === 'Backspace') deleteNumber()
     if (e.key >= 0 && e.key <= 9) appendNumber(e.key)
     if(e.key === '.') decimal()
+    if(e.key === 'c') clear();
 }

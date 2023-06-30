@@ -74,3 +74,13 @@ header h1{
   box-shadow: #1d2035 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+.info{
+    color: white;
+}
+.info h1{
+    text-decoration: underline;
+}
+.info ul{
+    list-style: none;
+}
