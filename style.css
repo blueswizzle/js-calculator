@@ -84,3 +84,9 @@ header h1{
 .info ul{
     list-style: none;
 }
+.info ul li{
+    margin: 0.8rem 0rem;
+}
+.info ul:last-child{
+    margin-bottom: 1.3em;
+}
